@@ -15,6 +15,21 @@ namespace Lab03_Robot
         public Form1()
         {
             InitializeComponent();
+            lblArrow.Text = Convert.ToChar(231).ToString();
+            lblArrow.Text = Convert.ToChar(232).ToString();
+            lblArrow.Text = Convert.ToChar(233).ToString();
+            lblArrow.Text = Convert.ToChar(234).ToString();
+        }
+
+
+
+
+
+
+
+        private void panel1_MouseClick(object sender, MouseEventArgs e)
+        {
+            MessageBox.Show("Funfact: Your stupid", "Funfact");
         }
     }
 }
