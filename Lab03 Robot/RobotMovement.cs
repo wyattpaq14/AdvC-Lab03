@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,15 +12,15 @@ namespace Lab03_Robot
 {
     public class RobotMovement
     {
-        public static int[] newPosition = { 0, 0 };
-        //public static int[] currentPosition = { 0, 0 };
+        public static int[] currentPos = { 0, 0 };
         public static string direction = "";
+        public static int moveAmount = 0;
 
 
         //Constructor
-        public RobotMovement(int[] newPosition, string direction)
+        public RobotMovement(int[] currentPos, string direction)
         {
-            this.CurrentPosition = currentPosition;
+            this.CurrentPos = currentPos;
             this.Direction = direction;
         }
 
@@ -26,22 +29,35 @@ namespace Lab03_Robot
             this.Direction = direction;
         }
 
+        public RobotMovement(int[] currentPos)
+        {
+            this.CurrentPos = currentPos;
+        }
+
+        public RobotMovement(int[] currentPos, int moveAmount)
+        {
+            this.CurrentPos = currentPos;
+            this.MoveAmount = moveAmount;
+        }
+
 
         //Properties
 
 
 
-        public int[] NewPosition
+        public int[] CurrentPos
         {
             get
             {
-                return newPosition;
+                return currentPos;
             }
             set
             {
-                newPosition = value;
+                currentPos = value;
             }
         }
+
+
 
         public string Direction
         {
@@ -55,37 +71,51 @@ namespace Lab03_Robot
             }
         }
 
-
-
-
-        //Get direction from main class
-        public void setDirection()
+        public int MoveAmount
         {
+            get
+            {
+                return moveAmount;
+            }
+            set
+            {
+                moveAmount = value;
+            }
+        }
+
+
+
+
+
+        //Point function that returns location
+        public Point moveRobot()
+        {
+
+            Point lblLocation = new Point(0, 0);
+
             if (direction == "NORTH")
             {
 
-                moveRobot();
+                currentPos[1] -= moveAmount;
             }
             else if (direction == "EAST")
             {
 
+                currentPos[0] += moveAmount;
             }
             else if (direction == "WEST")
             {
 
+                currentPos[0] -= moveAmount;
             }
             else if (direction == "SOUTH")
             {
 
+                currentPos[1] += moveAmount;
             }
-        }
 
-        public void moveRobot()
-        {
-            //Access form1
-            Form1 form = new Form1();
-            form.lblArrow.Location = new System.Drawing.Point(0, 0);
-
+            lblLocation = new Point(currentPos[0], currentPos[1]);
+            return lblLocation;
 
 
 

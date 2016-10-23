@@ -14,19 +14,14 @@ namespace Lab03_Robot
     {
 
         public int[] cords = { 0, 0 };
-        public int[] newCords = { 0, 0 };
-        public int[] startingCords = { 95, 100 };
         public Form1()
         {
             InitializeComponent();
             lblCords.Text = Convert.ToString(lblArrow.Location);
-            lblArrow.Text = Convert.ToChar(231).ToString();
-            lblArrow.Text = Convert.ToChar(232).ToString();
-            lblArrow.Text = Convert.ToChar(233).ToString();
-            lblArrow.Text = Convert.ToChar(234).ToString();
 
             //get initial cords to start the robot
-            RobotMovement robot = new RobotMovement(getCordnates(), newCords, "NORTH");
+            RobotMovement robot = new RobotMovement(getCordnates(), "NORTH");
+            lblArrow.Text = Convert.ToChar(233).ToString();
 
         }
 
@@ -38,41 +33,49 @@ namespace Lab03_Robot
 
         private void panel1_MouseClick(object sender, MouseEventArgs e)
         {
-             
-            cords = getCordnates();
-            RobotMovement robot = new RobotMovement(cords, startingCords, "NORTH");
 
         }
 
 
         private void btnNorth_Click(object sender, EventArgs e)
         {
-
+            RobotMovement robot = new RobotMovement("NORTH");
+            lblArrow.Text = Convert.ToChar(233).ToString();
         }
 
         private void btnEast_Click(object sender, EventArgs e)
         {
-
+            RobotMovement robot = new RobotMovement("EAST");
+            lblArrow.Text = Convert.ToChar(232).ToString();
         }
 
         private void btnSouth_Click(object sender, EventArgs e)
         {
-
+            RobotMovement robot = new RobotMovement("SOUTH");
+            
+            lblArrow.Text = Convert.ToChar(234).ToString();
         }
 
         private void btnWest_Click(object sender, EventArgs e)
         {
-
+            RobotMovement robot = new RobotMovement("WEST");
+            lblArrow.Text = Convert.ToChar(231).ToString();
         }
 
         private void btnGo1_Click(object sender, EventArgs e)
         {
-
+            RobotMovement robot = new RobotMovement(getCordnates(), 1);
+            Point location = robot.moveRobot();
+            lblArrow.Location = robot.moveRobot();
+            updateCords(location);
         }
 
         private void btnGo10_Click(object sender, EventArgs e)
         {
-
+            RobotMovement robot = new RobotMovement(getCordnates(), 10);
+            Point location = robot.moveRobot();
+            lblArrow.Location = location;
+            updateCords(location);
         }
 
         private void bntReset_Click(object sender, EventArgs e)
@@ -86,7 +89,10 @@ namespace Lab03_Robot
         }
 
 
-
+        private void updateCords(Point location)
+        {
+            lblCords.Text = Convert.ToString(location);
+        }
 
 
         private int[] getCordnates()
