@@ -93,22 +93,22 @@ namespace Lab03_Robot
 
             Point lblLocation = new Point(0, 0);
 
-            if (direction == "NORTH")
+            if (direction == "NORTH" && isValidLocation())
             {
 
                 currentPos[1] -= moveAmount;
             }
-            else if (direction == "EAST")
+            else if (direction == "EAST" && isValidLocation())
             {
 
                 currentPos[0] += moveAmount;
             }
-            else if (direction == "WEST")
+            else if (direction == "WEST" && isValidLocation())
             {
 
                 currentPos[0] -= moveAmount;
             }
-            else if (direction == "SOUTH")
+            else if (direction == "SOUTH" && isValidLocation())
             {
 
                 currentPos[1] += moveAmount;
@@ -117,8 +117,22 @@ namespace Lab03_Robot
             lblLocation = new Point(currentPos[0], currentPos[1]);
             return lblLocation;
 
+        }
 
 
+        //method to determin if location isn't out of bounds
+        private bool isValidLocation()
+        {
+            if (currentPos[0] >= 5 && currentPos[0] < 185 && currentPos[1] >= .10 && currentPos[1] < 185)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("You are out of bounds!", "Error!");
+                return false;
+            }
+            
         }
 
 
