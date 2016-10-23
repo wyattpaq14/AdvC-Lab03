@@ -78,6 +78,7 @@
             this.btnGo1.TabIndex = 2;
             this.btnGo1.Text = "Go 1";
             this.btnGo1.UseVisualStyleBackColor = true;
+            this.btnGo1.Click += new System.EventHandler(this.btnGo1_Click);
             // 
             // btnGo10
             // 
@@ -87,6 +88,7 @@
             this.btnGo10.TabIndex = 3;
             this.btnGo10.Text = "Go 10";
             this.btnGo10.UseVisualStyleBackColor = true;
+            this.btnGo10.Click += new System.EventHandler(this.btnGo10_Click);
             // 
             // btnNorth
             // 
@@ -96,6 +98,7 @@
             this.btnNorth.TabIndex = 4;
             this.btnNorth.Text = "N";
             this.btnNorth.UseVisualStyleBackColor = true;
+            this.btnNorth.Click += new System.EventHandler(this.btnNorth_Click);
             // 
             // btnEast
             // 
@@ -105,6 +108,7 @@
             this.btnEast.TabIndex = 5;
             this.btnEast.Text = "E";
             this.btnEast.UseVisualStyleBackColor = true;
+            this.btnEast.Click += new System.EventHandler(this.btnEast_Click);
             // 
             // btnSouth
             // 
@@ -114,6 +118,7 @@
             this.btnSouth.TabIndex = 6;
             this.btnSouth.Text = "S";
             this.btnSouth.UseVisualStyleBackColor = true;
+            this.btnSouth.Click += new System.EventHandler(this.btnSouth_Click);
             // 
             // btnWest
             // 
@@ -123,6 +128,7 @@
             this.btnWest.TabIndex = 7;
             this.btnWest.Text = "W";
             this.btnWest.UseVisualStyleBackColor = true;
+            this.btnWest.Click += new System.EventHandler(this.btnWest_Click);
             // 
             // bntReset
             // 
@@ -132,6 +138,7 @@
             this.bntReset.TabIndex = 8;
             this.bntReset.Text = "Reset";
             this.bntReset.UseVisualStyleBackColor = true;
+            this.bntReset.Click += new System.EventHandler(this.bntReset_Click);
             // 
             // btnExit
             // 
@@ -141,6 +148,7 @@
             this.btnExit.TabIndex = 9;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // Form1
             // 
@@ -170,7 +178,6 @@
 
         private System.Windows.Forms.Label lblCords;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lblArrow;
         private System.Windows.Forms.Button btnGo1;
         private System.Windows.Forms.Button btnGo10;
         private System.Windows.Forms.Button btnNorth;
@@ -179,6 +186,7 @@
         private System.Windows.Forms.Button btnWest;
         private System.Windows.Forms.Button bntReset;
         private System.Windows.Forms.Button btnExit;
+        public System.Windows.Forms.Label lblArrow;
     }
 }
 
