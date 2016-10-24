@@ -129,10 +129,11 @@ namespace Lab03_Robot
             }
             else
             {
-                MessageBox.Show("You are out of bounds!", "Error!");
+                MessageBox.Show("You crashed! Game over!", "Error!");
+
                 return false;
             }
-            
+
         }
 
 

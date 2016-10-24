@@ -59,7 +59,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 200);
             this.panel1.TabIndex = 1;
-            this.panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseClick);
             // 
             // lblArrow
             // 
@@ -166,7 +165,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblCords);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Robot";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

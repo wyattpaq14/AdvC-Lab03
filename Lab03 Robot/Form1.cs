@@ -17,25 +17,14 @@ namespace Lab03_Robot
         public Form1()
         {
             InitializeComponent();
-            lblCords.Text = Convert.ToString(lblArrow.Location);
 
-            //get initial cords to start the robot
+
+            //Set iniital position
+            updateCords(new Point(0, 0));
             RobotMovement robot = new RobotMovement(getCordnates(), "NORTH");
             lblArrow.Text = Convert.ToChar(233).ToString();
 
         }
-
-
-        //Declare RobotMovement class
-        
-
-        
-
-        private void panel1_MouseClick(object sender, MouseEventArgs e)
-        {
-
-        }
-
 
         private void btnNorth_Click(object sender, EventArgs e)
         {
@@ -52,7 +41,7 @@ namespace Lab03_Robot
         private void btnSouth_Click(object sender, EventArgs e)
         {
             RobotMovement robot = new RobotMovement("SOUTH");
-            
+
             lblArrow.Text = Convert.ToChar(234).ToString();
         }
 
@@ -80,7 +69,10 @@ namespace Lab03_Robot
 
         private void bntReset_Click(object sender, EventArgs e)
         {
-
+            //reset location and direction
+            lblArrow.Location = new Point(95, 100);
+            RobotMovement robot = new RobotMovement("NORTH");
+            lblArrow.Text = Convert.ToChar(233).ToString();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -91,7 +83,21 @@ namespace Lab03_Robot
 
         private void updateCords(Point location)
         {
-            lblCords.Text = Convert.ToString(location);
+            //Again, split up some shit
+            //Could have made a function for this but why complicate it more
+            string[] yValue;
+            string[] xValue;
+            string locationString = Convert.ToString(lblArrow.Location);
+            string[] stringArray = locationString.Split('=');
+            yValue = stringArray[2].Split('}');
+            xValue = stringArray[1].Split(',');
+
+            int[] cords = { Convert.ToInt32(xValue[0]), Convert.ToInt32(yValue[0]) };
+
+            int[] updatedCords = getCordnates();
+            //Set the cords to be relative to 0,0 instead of what ever it was
+            lblCords.Text = "X: " + (cords[0] - 95) + "  Y: " + (cords[1] - 100);
+
         }
 
 
@@ -105,7 +111,7 @@ namespace Lab03_Robot
             yValue = stringArray[2].Split('}');
             xValue = stringArray[1].Split(',');
 
-            //Didnt know a more efficent way of returning two values, so doing it this way 
+            //Didnt know a more efficent way of returning the two values, so doing it this way 
             int[] cords = { Convert.ToInt32(xValue[0]), Convert.ToInt32(yValue[0]) };
             return cords;
         }
