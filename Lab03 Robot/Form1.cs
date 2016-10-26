@@ -18,11 +18,13 @@ namespace Lab03_Robot
         {
             InitializeComponent();
 
-
             //Set iniital position
             updateCords(new Point(0, 0));
             RobotMovement robot = new RobotMovement(getCordnates(), "NORTH");
             lblArrow.Text = Convert.ToChar(233).ToString();
+
+            //Declare event handler, update cords when cords change
+            lblArrow.Move += new EventHandler(HandleChange);
 
         }
 
@@ -56,7 +58,7 @@ namespace Lab03_Robot
             RobotMovement robot = new RobotMovement(getCordnates(), 1);
             Point location = robot.moveRobot();
             lblArrow.Location = robot.moveRobot();
-            updateCords(location);
+
         }
 
         private void btnGo10_Click(object sender, EventArgs e)
@@ -64,7 +66,7 @@ namespace Lab03_Robot
             RobotMovement robot = new RobotMovement(getCordnates(), 10);
             Point location = robot.moveRobot();
             lblArrow.Location = location;
-            updateCords(location);
+
         }
 
         private void bntReset_Click(object sender, EventArgs e)
@@ -103,6 +105,8 @@ namespace Lab03_Robot
 
         private int[] getCordnates()
         {
+            //Discovered point.X and point.Y after doing the assignment, however this is a more 'unique' way of doing it
+
             //Split the shit out of everything, very important
             string[] yValue;
             string[] xValue;
@@ -114,6 +118,14 @@ namespace Lab03_Robot
             //Didnt know a more efficent way of returning the two values, so doing it this way 
             int[] cords = { Convert.ToInt32(xValue[0]), Convert.ToInt32(yValue[0]) };
             return cords;
+        }
+
+        private void HandleChange(object sender, EventArgs e)
+        {
+            //redundant code, however it works thats all that matters
+            int[] cords = getCordnates();
+            Point location = new Point(cords[0], cords[1]);
+            updateCords(location);
         }
     }
 }

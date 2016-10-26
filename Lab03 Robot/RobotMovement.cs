@@ -15,7 +15,7 @@ namespace Lab03_Robot
         public static int[] currentPos = { 0, 0 };
         public static string direction = "";
         public static int moveAmount = 0;
-
+        public event EventHandler Changed;
 
         //Constructor
         public RobotMovement(int[] currentPos, string direction)
